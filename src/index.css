@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -24,4 +24,83 @@ main {
 
 .min-height {
   min-height: 100vh;
+}
+
+.btn-side-lr {
+  display: none;
+}
+
+footer {
+  background-color: #d8b00f;
+  padding: 40px 0 0 0;
+}
+
+.copyright {
+  background: #fff;
+  font-size: 18px;
+}
+
+.text-box {
+  resize: none;
+}
+
+:focus {
+  outline: none;
+}
+
+.text-box::placeholder {
+  padding: 20px 0;
+}
+
+ul {
+  list-style: none;
+  width: 600px;
+}
+
+li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+li a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+li a:hover {
+  color: white;
+}
+
+.newsletter {
+  font-size:23px;
+  font-weight: bold;
+  color: #fff;
+  margin-right:30px;
+}
+
+@media (max-width:1120px) {
+  .navitem {
+    display: none;
+  }
+
+  .btnlr {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width:768px) {
+  .logo-img {
+    width: 130px;
+  }
+}
+
+@media (max-width:480px) {
+  .btnlr {
+    display: none;
+  }
+
+  .btn-side-lr {
+    display: block;
+  }
 }

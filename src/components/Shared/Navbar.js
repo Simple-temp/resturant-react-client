@@ -15,18 +15,26 @@ const NavBar = ({ name, ...props }) => {
 
     return (
         <>
-
             <Navbar variant='dark' bg='dark'>
-                <Container>
-                    <LinkContainer to="/">
-                        <Nav.Link>
-                            <img src="images/logo.png" alt="" />
-                        </Nav.Link>
-                    </LinkContainer>
-                    <Button variant="primary" className='d-block ms-auto my-2' onClick={handleShow}>
-                        <i className="fa-solid fa-bars"></i>
-                    </Button>
-                </Container>
+                <LinkContainer to="/">
+                    <Nav.Link>
+                        <img src="images/logo.png" alt="" className='logo-img' />
+                    </Nav.Link>
+                </LinkContainer>
+                <div className='mx-auto navitem'>
+                    <Nav className='ms-auto'>
+                        <Nav.Link href="#">Contact Us : <i className="fa-solid fa-phone-volume"></i> : 987-654-3210 </Nav.Link>
+                        <Nav.Link href="#"><i className="fa-solid fa-envelope"></i> : demo@gmail.com</Nav.Link>
+                        <Nav.Link href="#"><i className="fa-solid fa-location-dot"></i> : 104 New york , USA</Nav.Link>
+                    </Nav>
+                </div>
+                <div className="btnlr">
+                    <Button className='ms-5'>LOGIN</Button>
+                    <Button className='ms-1'>REGISTER</Button>
+                </div>
+                <Button className='d-block ms-auto my-2 me-5' onClick={handleShow}>
+                    <i className="fa-solid fa-bars"></i>
+                </Button>
             </Navbar>
 
             <Offcanvas show={show} onHide={handleClose}>
@@ -49,11 +57,18 @@ const NavBar = ({ name, ...props }) => {
                             <LinkContainer to="/contact">
                                 <Nav.Link>Contact us</Nav.Link>
                             </LinkContainer>
+                            <div className="btn-side-lr">
+                                <LinkContainer to="/login">
+                                    <Nav.Link>Login</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/register">
+                                    <Nav.Link>Register</Nav.Link>
+                                </LinkContainer>
+                            </div>
                         </ul>
                     </div>
                 </Offcanvas.Body>
             </Offcanvas>
-
         </>
     );
 };
