@@ -23,17 +23,17 @@ const NavBar = ({ name, ...props }) => {
                 </LinkContainer>
                 <div className='mx-auto navitem'>
                     <Nav className='ms-auto'>
-                        <Nav.Link href="#">Contact Us : <i className="fa-solid fa-phone-volume"></i> : 987-654-3210 </Nav.Link>
+                        <Nav.Link href="#" className='ms-4'>Contact Us : <i className="fa-solid fa-phone-volume"></i> : 987-654-3210 </Nav.Link>
                         <Nav.Link href="#"><i className="fa-solid fa-envelope"></i> : demo@gmail.com</Nav.Link>
                         <Nav.Link href="#"><i className="fa-solid fa-location-dot"></i> : 104 New york , USA</Nav.Link>
                     </Nav>
                 </div>
                 <div className="btnlr">
-                    <Button className='ms-5'>LOGIN</Button>
-                    <Button className='ms-1'>REGISTER</Button>
+                    <Button className='ms-5 rounded-0' variant='warning'>LOGIN</Button>
+                    <Button className='ms-2 text-white border rounded-0' variant='outline-dark'>REGISTER</Button>
                 </div>
-                <Button className='d-block ms-auto my-2 me-5' onClick={handleShow}>
-                    <i className="fa-solid fa-bars"></i>
+                <Button className='d-block ms-auto my-2 me-5 text-white' variant='outline-dark'>
+                    <i className="fa-solid fa-bars bars" onClick={handleShow}></i>
                 </Button>
             </Navbar>
 

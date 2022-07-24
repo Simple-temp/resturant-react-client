@@ -47,9 +47,9 @@ const Footer = () => {
                 </div>
                 <Col md={6} className="mx-auto pb-5 mt-4">
                     <Form className='d-flex justify-content-center'>
-                        <span className='newsletter'>NEWSLETTER</span>
-                        <input type="text" placeholder='Your E-mail' className='w-50 ps-2'/>
-                       <Button className='text-white border border-0' variant='dark border'> Subscribe</Button>
+                        <p className='newsletter'>NEWSLETTER</p>
+                        <input type="text" placeholder='Your E-mail' className='w-50 ps-2 border border-0' />
+                        <Button className='bg-dark text-white border border-0 rounded-0'> Subscribe</Button>
                     </Form>
                 </Col>
             </Container>

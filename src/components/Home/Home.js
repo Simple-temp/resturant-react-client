@@ -8,11 +8,19 @@ import Recipes from './Recipes';
 const Home = () => {
     return (
         <div>
-            <Main/>
-            <Recipes/>
-            <About/>
-            <Blog/>
-            <Client/>
+            <Main />
+            <Recipes />
+            <div className="client">
+                <section>
+                    <About />
+                </section>
+                <section>
+                    <Blog />
+                </section>
+                <section>
+                    <Client />
+                </section>
+            </div>
         </div>
     );
 };
