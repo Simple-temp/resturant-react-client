@@ -36,7 +36,7 @@ const Footer = () => {
             </Container>
             <Container className='pb-5'>
                 <hr className='bg-white' />
-                <div className="d-block w-100">
+                <div className="d-block w-100 footer-ul">
                     <ul className='mx-auto'>
                         <li><a href="">Home</a></li>
                         <li><a href="">About</a></li>

@@ -150,6 +150,9 @@ li a:hover {
   .logo-img {
     width: 130px;
   }
+  .footer-ul ul{
+    display: none;
+  }
 }
 
 @media (max-width:480px) {
