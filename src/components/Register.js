@@ -1,10 +1,14 @@
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { REGISTER_USER } from '../gqloperation/Mutations';
 
 const Register = () => {
 
     const [formData, setformData] = useState({})
+    const [Register,{ loading, error, data}] = useMutation(REGISTER_USER)
+    console.log(data)
 
     const handleChange = (e) => {
         setformData({
@@ -15,7 +19,13 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(e)
-        console.log(formData)
+        Register({
+            variables : {
+                userInfo :{
+                    ...formData
+                }
+            }
+        })
     }
 
 
@@ -43,7 +53,7 @@ const Register = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" name="password" onChange={handleChange} />
                             </Form.Group>
-                            <p className='text-warning'> Already have an account? <Link to="/Login" className='text-warning'>Register</Link></p>
+                            <p className='text-warning'> Already have an account? <Link to="/Login" className='text-warning'>Login</Link></p>
                             <br />
                             <Button variant="warning rounded-0" type="submit">
                                 Register

@@ -1,10 +1,14 @@
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { LOGIN_USER } from '../gqloperation/Mutations';
 
 const Login = () => {
 
     const [ formData, setformData ] = useState({})
+    const [Login,{loading, error, data}] = useMutation(LOGIN_USER)
+    console.log(data)
 
     const handleChange = (e) =>{
         setformData({
@@ -15,7 +19,13 @@ const Login = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault(e)
-        console.log(formData)
+        Login({
+            variables : {
+                userInfo : {
+                    ...formData
+                }
+            }
+        })
     }
 
     return (

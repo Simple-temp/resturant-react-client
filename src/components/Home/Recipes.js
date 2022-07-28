@@ -1,6 +1,8 @@
+import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import Carousel from "react-elastic-carousel";
+import { GET_FOODS } from '../../gqloperation/Queres';
 import Item from '../Item';
 
 const breakPoints = [
@@ -11,6 +13,10 @@ const breakPoints = [
 ];
 
 const Recipes = () => {
+
+    const { loading: foodLoading, error: foodError, data: food } = useQuery(GET_FOODS)
+    console.log(food)
+
     return (
         <>
             <Container>
@@ -18,31 +24,18 @@ const Recipes = () => {
             </Container>
             <Container className='App'>
                 <Carousel breakPoints={breakPoints}>
-                    <Item>
-                        <img src="images/rs1.png" alt="" className='img-fluid' />
-                        <p className='mt-4'>Homemade</p>
-                        <h6><span>$</span>10</h6>
-                    </Item>
-                    <Item>
-                        <img src="images/rs2.png" alt="" className='img-fluid' />
-                        <p className='mt-4'>Noodles</p>
-                        <h6><span>$</span>20</h6>
-                    </Item>
-                    <Item>
-                        <img src="images/rs3.png" alt="" className='img-fluid' />
-                        <p className='mt-4'>Egg</p>
-                        <h6><span>$</span>30</h6>
-                    </Item>
-                    <Item>
-                        <img src="images/rs4.png" alt="" className='img-fluid' />
-                        <p className='mt-4'>Sushi Dizzy</p>
-                        <h6><span>$</span>50</h6>
-                    </Item>
-                    <Item>
-                        <img src="images/rs5.png" alt="" className='img-fluid' />
-                        <p className='mt-4'>The Coffee Break</p>
-                        <h6><span>$</span>50</h6>
-                    </Item>
+                    {
+                        foodLoading ? <h4 className='text-white'>Loading..</h4>
+                            : foodError ? console.log(foodError)
+                                : food.foods.map((item) => (
+                                    <Item key={item._id}>
+                                        <img src={item.img} alt="" className='img-fluid' />
+                                        <p className='mt-4'>{item.name}</p>
+                                        <h6><span>$</span>{item.price}</h6>
+                                    </Item>
+                                )
+                            )
+                    }
                 </Carousel>
             </Container>
         </>
