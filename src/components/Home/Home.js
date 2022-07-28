@@ -8,8 +8,12 @@ import Recipes from './Recipes';
 const Home = () => {
     return (
         <div>
-            <Main />
-            <Recipes />
+            <div className="main-section">
+                <Main />
+            </div>
+            <div className="recipe-section">
+                <Recipes />
+            </div>
             <div className="client">
                 <section>
                     <About />

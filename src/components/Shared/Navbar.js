@@ -29,8 +29,12 @@ const NavBar = ({ name, ...props }) => {
                     </Nav>
                 </div>
                 <div className="btnlr">
-                    <Button className='ms-5 rounded-0' variant='warning'>LOGIN</Button>
-                    <Button className='ms-2 text-white border rounded-0' variant='outline-dark'>REGISTER</Button>
+                    <Link to="/login">
+                        <Button className='ms-5 rounded-0' variant='warning'>LOGIN</Button>
+                    </Link>
+                    <Link to="/register">
+                        <Button className='ms-2 text-white border rounded-0' variant='outline-dark'>REGISTER</Button>
+                    </Link>
                 </div>
                 <Button className='d-block ms-auto my-2 me-5 text-white' variant='outline-dark'>
                     <i className="fa-solid fa-bars bars" onClick={handleShow}></i>

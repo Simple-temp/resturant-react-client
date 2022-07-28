@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
 export default styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 250px;
+  height: auto;
   width: 100%;
-  background-color: #00008B;
-  color: #fff;
   margin: 0 15px;
-  font-size: 4em;
+  padding: 20px 10px;
+  text-align: center;
 `;

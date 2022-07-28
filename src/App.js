@@ -7,6 +7,8 @@ import Blog from "./components/Home/Blog";
 import Contact from "./components/Home/Contact";
 import Home from "./components/Home/Home";
 import Recipes from "./components/Home/Recipes";
+import Login from "./components/Login";
+import Register from "./components/Register";
 import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Shared/Navbar";
 
@@ -25,6 +27,8 @@ function App() {
             <Route path="/recipe" element={<Recipes />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </main>
         <footer>

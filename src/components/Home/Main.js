@@ -15,7 +15,7 @@ const breakPoints = [
 const Main = () => {
 
     return (
-        <Container className='App'>
+        <Container>
             <Carousel>
                 <Row>
                     <Col md={5}>
@@ -23,11 +23,11 @@ const Main = () => {
                             <h1>Discover Restaurants
                                 That deliver near You</h1>
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <Button variant='outline-dark' className='dark rounded-0'>Order Now</Button>
+                            <Button variant='outline-dark' className='text-white rounded-0 border-white'>Order Now</Button>
                         </div>
                     </Col>
                     <Col md={7}>
-                        <img src="images/s1.jpg" alt="" className='img-fluid w-100 ' />
+                        <img src="images/s1.png" alt="" className='img-fluid w-100 ' />
                     </Col>
                 </Row>
                 <Row>
@@ -36,11 +36,11 @@ const Main = () => {
                             <h1>Discover Restaurants
                                 That deliver near You</h1>
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <Button variant='outline-dark' className='dark rounded-0'>Order Now</Button>
+                            <Button variant='outline-dark' className='text-white rounded-0 border-white'>Order Now</Button>
                         </div>
                     </Col>
                     <Col md={7}>
-                        <img src="images/s2.jpg" alt="" className='img-fluid w-100 ' />
+                        <img src="images/s2.png" alt="" className='img-fluid w-100 ' />
                     </Col>
                 </Row>
                 <Row>
@@ -49,11 +49,11 @@ const Main = () => {
                             <h1>Discover Restaurants
                                 That deliver near You</h1>
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <Button variant='outline-dark' className='dark rounded-0'>Order Now</Button>
+                            <Button variant='outline-dark' className='text-white rounded-0 border-white'>Order Now</Button>
                         </div>
                     </Col>
                     <Col md={7}>
-                        <img src="images/s3.jpg" alt="" className='img-fluid w-100 ' />
+                        <img src="images/s3.png" alt="" className='img-fluid w-100 ' />
                     </Col>
                 </Row>
             </Carousel>
