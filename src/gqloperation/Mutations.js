@@ -34,7 +34,6 @@ export const UPDATE_USER = gql`
 
 mutation updateuser ( $updateUser : updateUser! ){
     updateuser (updateUser : $updateUser ){
-      _id
       name
       email
       password

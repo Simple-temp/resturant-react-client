@@ -15,7 +15,6 @@ const breakPoints = [
 const Recipes = () => {
 
     const { loading: foodLoading, error: foodError, data: food } = useQuery(GET_FOODS)
-    console.log(food)
 
     return (
         <>

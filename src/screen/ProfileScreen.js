@@ -1,14 +1,15 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { REGISTER_USER } from '../gqloperation/Mutations';
+import { UPDATE_USER } from '../gqloperation/Mutations';
+import { toast } from "react-toastify";
 
-const Register = () => {
+const ProfileScreen = () => {
 
     const [formData, setformData] = useState({})
-    const [Register,{ loading, error, data}] = useMutation(REGISTER_USER)
-    console.log(data)
+    const [updateProfile] = useMutation(UPDATE_USER)
+    // const info = JSON.parse(localStorage.getItem("userInfo"))
+    // console.log(info.token)
 
     const handleChange = (e) => {
         setformData({
@@ -19,21 +20,31 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(e)
-        Register({
-            variables : {
-                userInfo :{
-                    ...formData
-                }
-            }
-        })
-    }
 
+        try{
+
+            updateProfile({
+                variables : {
+                    updateUser : {
+                        ...formData
+                    }
+                }
+            })
+
+            toast.success("Profile Updated Succesfully!")
+
+        }catch(err){
+            console.log(err)
+            toast.error("Profile Don't Updated!")
+        }
+
+    }
 
     return (
         <div>
             <Container className='my-5'>
                 <div className="form-title">
-                    <h3 className='text-warning text-center my-4'>Register</h3>
+                    <h3 className='text-warning text-center my-4'>Update Profile</h3>
                 </div>
                 <Row>
                     <Col md={5} className="mx-auto">
@@ -41,22 +52,21 @@ const Register = () => {
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" name="name" onChange={handleChange} required/>
+                                <Form.Control type="text" name="name" onChange={handleChange} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" name="email" onChange={handleChange} required/>
+                                <Form.Control type="email" name="email" onChange={handleChange} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" name="password" onChange={handleChange} required/>
                             </Form.Group>
-                            <p className='text-warning'> Already have an account? <Link to="/Login" className='text-warning'>Login</Link></p>
-                            <br />
+
                             <Button variant="warning rounded-0" type="submit">
-                                Register
+                                Update
                             </Button>
                         </Form>
                     </Col>
@@ -66,4 +76,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default ProfileScreen;
