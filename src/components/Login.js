@@ -11,14 +11,16 @@ const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [formData, setformData] = useState({})
-    const [Login, { loading, error, data: user }] = useMutation(LOGIN_USER, {
-        onCompleted(data) {
-            dispatch(loginUser(data && data.loginuser))
-            localStorage.setItem("userInfo", JSON.stringify(data && data.loginuser))
-            window.location.reload()
-            navigate("/")
+    const [Login, { loading, error, data }] = useMutation(LOGIN_USER,
+        {
+            onCompleted(data) {
+                dispatch(loginUser(data.loginuser))
+                localStorage.setItem("userInfo", JSON.stringify(data.loginuser))
+                navigate("/")
+                window.location.reload()
+            }
         }
-    })
+    )
 
     const handleChange = (e) => {
         setformData({
@@ -66,8 +68,7 @@ const Login = () => {
                             <Button variant="warning rounded-0" type="submit">
                                 {
                                     loading ? <span>loading..</span>
-                                        : error ? console.log(error)
-                                            : "Login"
+                                        : "Login"
                                 }
                             </Button>
                         </Form>

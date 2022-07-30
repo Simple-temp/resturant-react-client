@@ -63,51 +63,51 @@ const NavBar = ({ name, ...props }) => {
                 <Offcanvas.Header closeButton className='d-block ms-auto' />
                 <Offcanvas.Body>
                     <div className="sidebar">
-                        <ul className='color-warning'>
+                        <ul>
                             {
                                 user.userInfo && user.userInfo.isAdmin ? <>
                                     <LinkContainer to="/profile">
-                                        <Nav.Link>{user.userInfo.name}</Nav.Link>
+                                        <Nav.Link className='text-warning text-capitalize'>{user.userInfo.name}</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/admin/myorder">
-                                        <Nav.Link>My Order</Nav.Link>
+                                        <Nav.Link className='text-warning text-capitalize'>My Order</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/admin/user">
-                                        <Nav.Link>Users</Nav.Link>
+                                        <Nav.Link className='text-warning text-capitalize'>Users</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/admin/food">
-                                        <Nav.Link>Foods</Nav.Link>
+                                        <Nav.Link className='text-warning text-capitalize'>Foods</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/admin/allorder">
-                                        <Nav.Link>Orders</Nav.Link>
+                                        <Nav.Link className='text-warning text-capitalize'>Orders</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/admin/adminlist">
-                                        <Nav.Link>Admin List</Nav.Link>
+                                        <Nav.Link className='text-warning text-capitalize'>Admin List</Nav.Link>
                                     </LinkContainer>
                                 </>
                                 : user.userInfo && <>
                                         <LinkContainer to="/profile">
-                                            <Nav.Link>Profile</Nav.Link>
+                                            <Nav.Link className='text-warning text-capitalize'>{user.userInfo.name}</Nav.Link>
                                         </LinkContainer>
                                         <LinkContainer to="/order">
-                                            <Nav.Link>My Order</Nav.Link>
+                                            <Nav.Link className='text-warning text-capitalize'>My Order</Nav.Link>
                                         </LinkContainer>
                                     </>
                             }
                             <LinkContainer to="/">
-                                <Nav.Link>Home</Nav.Link>
+                                <Nav.Link className='text-warning text-capitalize'>Home</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/about">
-                                <Nav.Link>About</Nav.Link>
+                                <Nav.Link className='text-warning text-capitalize'>About</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/recipe" >
-                                <Nav.Link>Recipe</Nav.Link>
+                                <Nav.Link className='text-warning text-capitalize'>Recipe</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/blog">
-                                <Nav.Link>Blog</Nav.Link>
+                                <Nav.Link className='text-warning text-capitalize'>Blog</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/contact">
-                                <Nav.Link>Contact Us</Nav.Link>
+                                <Nav.Link className='text-warning text-capitalize'>Contact Us</Nav.Link>
                             </LinkContainer>
                             <div className="btn-side-lr">
                                 {
@@ -119,10 +119,10 @@ const NavBar = ({ name, ...props }) => {
                                         </Button>
                                         : <>
                                             <LinkContainer to="/login">
-                                                <Nav.Link>Login</Nav.Link>
+                                                <Nav.Link className='text-warning text-capitalize'>Login</Nav.Link>
                                             </LinkContainer>
                                             <LinkContainer to="/register">
-                                                <Nav.Link>Register</Nav.Link>
+                                                <Nav.Link className='text-warning text-capitalize'>Register</Nav.Link>
                                             </LinkContainer>
                                         </>
                                 }
