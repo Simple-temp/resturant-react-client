@@ -19,9 +19,28 @@ export const UpdateUser = (user) => {
     }
 }
 
-export const logOutUser = (user) => {
+export const logOutUser = () => {
     return {
         type : "LOGOUT_USER",
-        payload : user,
+    }
+}
+
+export const payment = (paymentMethod) => {
+    return {
+        type : "PAYMENT_METHOD",
+        payload : paymentMethod,
+    }
+}
+
+export const shippingAddress = (shippingAddress) => {
+    return {
+        type : "SAHIPPING_ADDRESS",
+        payload : shippingAddress,
+    }
+}
+
+export const clearCart = () => {
+    return {
+        type : "CLEAR_CART",
     }
 }

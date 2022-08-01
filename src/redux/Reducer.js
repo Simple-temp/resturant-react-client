@@ -13,6 +13,9 @@ const cart = {
         paymentMethod: localStorage.getItem("paymentMethod")
             ? localStorage.getItem("paymentMethod")
             : "",
+        shippingAddress: localStorage.getItem("shippingAddress")
+            ? localStorage.getItem("shippingAddress")
+            : {},
     }
 
 }
@@ -26,8 +29,12 @@ const handleCart = (state = cart, action) => {
             return { ...state, userInfo: action.payload }
         case "UPDATE_USER":
             return { ...state, userInfo: action.payload }
+        case "PAYMENT_METHOD":
+            return { ...state, cart : { ...state.cart, paymentMethod: action.payload  }}
+        case "SAHIPPING_ADDRESS":
+            return { ...state, cart : { ...state.cart, shippingAddress: action.payload } }
         case "LOGOUT_USER":
-            return { ...state, userInfo: null }
+            return { ...state, userInfo: null, cart : { paymentMethod: "", shippingAddress: {}} }
         default:
             return state
     }

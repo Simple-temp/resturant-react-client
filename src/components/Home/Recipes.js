@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import Carousel from "react-elastic-carousel";
+import { Link } from 'react-router-dom';
 import { GET_FOODS } from '../../gqloperation/Queres';
 import Item from '../Item';
 
@@ -28,12 +29,14 @@ const Recipes = () => {
                             : foodError ? console.log(foodError)
                                 : food.foods.map((item) => (
                                     <Item key={item._id}>
-                                        <img src={item.img} alt="" className='img-fluid' />
+                                        <Link to={`/foodDetails/${item._id}`}>
+                                            <img src={item.img} alt="" className='img-fluid' />
+                                        </Link>
                                         <p className='mt-4'>{item.name}</p>
                                         <h6><span>$</span>{item.price}</h6>
                                     </Item>
                                 )
-                            )
+                                )
                     }
                 </Carousel>
             </Container>

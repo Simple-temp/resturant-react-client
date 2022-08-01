@@ -18,6 +18,14 @@ code {
   box-sizing: border-box;
 }
 
+i{
+  color:#d8b00f
+}
+
+.cart {
+  font-size: 24px
+}
+
 main {
   flex: 1;
 }
@@ -164,6 +172,12 @@ li a:hover {
   font-size: 18px;
 }
 
+@media (max-width:1260px) {
+  .navitem {
+    display: none;
+  }
+}
+
 @media (max-width:1149px) {
   .navitem {
     font-size: 15px;
@@ -180,10 +194,6 @@ li a:hover {
 }
 
 @media (max-width:1120px) {
-  .navitem {
-    display: none;
-  }
-
   .btnlr {
     margin: 0 auto;
   }
@@ -193,24 +203,21 @@ li a:hover {
   .logo-img {
     width: 130px;
   }
+  .btnlr {
+    display: none;
+  }
+  .btn-side-lr {
+    display: block;
+  }
   .footer-ul ul{
     display: none;
   }
 }
 
 @media (max-width:480px) {
-  .btnlr {
-    display: none;
-  }
-
-  .btn-side-lr {
-    display: block;
-  }
-
   .newsletter{
     display: none;
   }
-
  .rec-arrow-right,
  .rec-arrow-left{
     display: none !important;

@@ -11,8 +11,11 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Shared/Navbar";
+import CartScreen from "./screen/CartScreen";
 import FoodDetailsScreen from "./screen/FoodDetailsScreen";
+import PaymentMethodScreen from "./screen/PaymentMethodScreen";
 import ProfileScreen from "./screen/ProfileScreen";
+import ShippingAddressScreen from "./screen/ShippingAddressScreen";
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/foodDetails/:id" element={<FoodDetailsScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
+            <Route path="/payment" element={<PaymentMethodScreen />} />
+            <Route path="/shipping" element={<ShippingAddressScreen />} />
           </Routes>
         </main>
         <footer>

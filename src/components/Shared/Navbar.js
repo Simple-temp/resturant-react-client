@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Nav, Button, Navbar } from 'react-bootstrap';
+import { Nav, Button, Navbar, Badge } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
@@ -11,13 +11,16 @@ const NavBar = ({ name, ...props }) => {
 
     const dispatch = useDispatch()
     const user = useSelector((state) => state.handleCart)
+    const cart = useSelector((state) => state.handleCart)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const logOutuser = (user) => {
-        dispatch(logOutUser(user))
+    const logOutuser = () => {
+        dispatch(logOutUser())
         localStorage.removeItem("userInfo")
+        localStorage.removeItem("paymentMethod")
+        localStorage.removeItem("shippingAddress")
         window.location.href = "/login"
     }
 
@@ -39,7 +42,7 @@ const NavBar = ({ name, ...props }) => {
                 <div className="btnlr">
                     {
                         user.userInfo
-                            ? <Button variant='warning' className='rounded-0' onClick={() => logOutuser(user.userInfo)}>
+                            ? <Button variant='warning' className='rounded-0' onClick={() => logOutuser()}>
                                 <Link to="#signout">
                                     <i className="fa-solid fa-right-from-bracket"></i>
                                 </Link>
@@ -54,6 +57,16 @@ const NavBar = ({ name, ...props }) => {
                             </>
                     }
                 </div>
+                <Link to="/cart">
+                    <Button className='my-2' variant='outline-dark'>
+                        <i className="fa-solid fa-cart-arrow-down cart"></i>
+                    </Button>
+                    {
+                        cart.cart.cartItem.length === 0 
+                        ? null
+                        : <Badge bg='warning'>{cart.cart.cartItem.length}</Badge>
+                    }
+                </Link>
                 <Button className='d-block ms-auto my-2 me-5 text-white' variant='outline-dark'>
                     <i className="fa-solid fa-bars bars" onClick={handleShow}></i>
                 </Button>
@@ -85,7 +98,7 @@ const NavBar = ({ name, ...props }) => {
                                         <Nav.Link className='text-warning text-capitalize'>Admin List</Nav.Link>
                                     </LinkContainer>
                                 </>
-                                : user.userInfo && <>
+                                    : user.userInfo && <>
                                         <LinkContainer to="/profile">
                                             <Nav.Link className='text-warning text-capitalize'>{user.userInfo.name}</Nav.Link>
                                         </LinkContainer>
