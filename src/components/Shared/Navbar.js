@@ -64,7 +64,7 @@ const NavBar = ({ name, ...props }) => {
                     {
                         cart.cart.cartItem.length === 0 
                         ? null
-                        : <Badge bg='warning'>{cart.cart.cartItem.length}</Badge>
+                        : <Badge bg='warning'>{cart.cart.cartItem.reduce((a, c) => a + c.quantity, 0)}</Badge>
                     }
                 </Link>
                 <Button className='d-block ms-auto my-2 me-5 text-white' variant='outline-dark'>

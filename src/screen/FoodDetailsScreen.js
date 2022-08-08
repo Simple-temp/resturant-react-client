@@ -1,12 +1,17 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import Rating from '../components/Rating';
 import { GET_FOOD_BY_ID } from '../gqloperation/Queres';
+import { AddToCart } from '../redux/Action';
 
 const FoodDetailsScreen = () => {
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const cart = useSelector((state) => state.handleCart)
     const param = useParams()
     const { id } = param
     const { loading, error, data } = useQuery(GET_FOOD_BY_ID, {
@@ -14,6 +19,14 @@ const FoodDetailsScreen = () => {
             foodId: id
         }
     })
+
+    const updateAddTocart = () => {
+
+        const exitsItem = cart.cart.cartItem.find((x) => x._id === data.food._id)
+        const quantity = exitsItem ? exitsItem.quantity + 1 : 1
+        dispatch(AddToCart(data.food, quantity))
+        navigate("/cart")
+    }
 
     return (
         <div>
@@ -37,7 +50,9 @@ const FoodDetailsScreen = () => {
                                             : <Badge bg='success'>Available {data.food.stock}</Badge>
                                             } </Card.Text>
                                             <Rating rating={data.food.rating}/>
-                                            <Button variant="warning" className='rounded-0 mt-2'>Add to Cart</Button>
+                                            <Button variant="warning" className='rounded-0 mt-2' onClick={()=>updateAddTocart()}>
+                                                Add to Cart
+                                            </Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>

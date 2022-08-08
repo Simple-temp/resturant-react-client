@@ -8,12 +8,14 @@ import Contact from "./components/Home/Contact";
 import Home from "./components/Home/Home";
 import Recipes from "./components/Home/Recipes";
 import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
 import Register from "./components/Register";
 import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Shared/Navbar";
 import CartScreen from "./screen/CartScreen";
 import FoodDetailsScreen from "./screen/FoodDetailsScreen";
 import PaymentMethodScreen from "./screen/PaymentMethodScreen";
+import PlaceOrderScreen from "./screen/PlaceOrderScreen";
 import ProfileScreen from "./screen/ProfileScreen";
 import ShippingAddressScreen from "./screen/ShippingAddressScreen";
 
@@ -37,8 +39,15 @@ function App() {
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/foodDetails/:id" element={<FoodDetailsScreen />} />
             <Route path="/cart" element={<CartScreen />} />
-            <Route path="/payment" element={<PaymentMethodScreen />} />
-            <Route path="/shipping" element={<ShippingAddressScreen />} />
+            <Route path="/payment" element={<PrivateRoute>
+              <PaymentMethodScreen />
+            </PrivateRoute>} />
+            <Route path="/shipping" element={<PrivateRoute>
+              <ShippingAddressScreen />
+            </PrivateRoute>} />
+            <Route path="/placeorder" element={<PrivateRoute>
+              <PlaceOrderScreen />
+            </PrivateRoute>} />
           </Routes>
         </main>
         <footer>

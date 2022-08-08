@@ -32,10 +32,24 @@ export const payment = (paymentMethod) => {
     }
 }
 
-export const shippingAddress = (shippingAddress) => {
+export const shippingAddress = (country, address, postalCode, phone) => {
     return {
         type : "SAHIPPING_ADDRESS",
-        payload : shippingAddress,
+        payload : { country, address, postalCode, phone } ,
+    }
+}
+
+export const AddToCart = (item, quantity) => {
+    return {
+        type : "ADD_TO_CART",
+        payload : { ...item, quantity}
+    }
+}
+
+export const removeToCart = (item) => {
+    return {
+        type : "REMOVE_TO_CART",
+        payload : item,
     }
 }
 
