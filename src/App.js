@@ -12,6 +12,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import Register from "./components/Register";
 import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Shared/Navbar";
+import AddNewFood from "./screen/AddNewFood";
+import AdminListScreen from "./screen/AdminListScreen";
 import CartScreen from "./screen/CartScreen";
 import FoodDetailsScreen from "./screen/FoodDetailsScreen";
 import FoodEditScreen from "./screen/FoodEditScreen";
@@ -74,6 +76,12 @@ function App() {
             </PrivateRoute>} />
             <Route path="/foodedit/:id" element={<PrivateRoute>
               <FoodEditScreen />
+            </PrivateRoute>} />
+            <Route path="/admin/adminlist" element={<PrivateRoute>
+              <AdminListScreen />
+            </PrivateRoute>} />
+            <Route path="/admin/addnew" element={<PrivateRoute>
+              <AddNewFood />
             </PrivateRoute>} />
           </Routes>
         </main>

@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import { GET_USERS, MY_ORDER } from '../gqloperation/Queres';
-import { Container } from "react-bootstrap"
+import { Container, Alert } from "react-bootstrap"
 import { Button } from 'react-bootstrap';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
@@ -63,6 +63,9 @@ const OrderedScreen = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {
+                                        data.myorders.length === 0 && <Alert variant='info'>You don't have any order</Alert>
+                                    }
                                     {data.myorders.map((order) => (
 
                                         <tr key={order._id}>

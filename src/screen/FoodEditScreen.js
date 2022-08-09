@@ -18,11 +18,11 @@ const FoodEditScreen = () => {
     const stock = parseInt(stockInt)
     const [ img, setImg] = useState()
 
-    const [createFOOD, { loading, error, data }] = useMutation(UPDATE_FOOD)
+    const [updateFOOD, { loading, error, data }] = useMutation(UPDATE_FOOD)
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        createFOOD({
+        updateFOOD({
             variables : {
                 updateFood : {
                     _id : id,
