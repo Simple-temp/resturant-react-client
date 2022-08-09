@@ -159,3 +159,38 @@ mutation isdelivered ( $orderId : ID! ){
   }
 
 `
+
+export const CREATE_ORDER = gql`
+
+mutation createorder( $createOrder : createOrder!){
+  createorder(createOrder : $createOrder){
+    _id
+    userid
+    foodItem {
+        _id
+    		name 
+    		img 
+    		quantity
+   			price 
+    		des 
+    		rating 
+    		review 
+    		stock 
+    }
+    shippingAddress {
+      country
+      address
+      postalCode
+      phone
+    }
+    paymentMethod
+    itemPrice
+    totalPrice
+    isPaid
+    paidAt
+    isDelivered
+    devliveredAt
+  }
+}
+
+`

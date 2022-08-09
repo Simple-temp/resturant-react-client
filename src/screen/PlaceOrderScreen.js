@@ -1,14 +1,67 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios"
+import {toast} from "react-toastify"
+import { clearCart } from '../redux/Action';
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "FETCH_REQUEST":
+            return { ...state, loading: true, }
+        case "FETCH_SUCCESS":
+            return { ...state, loading: false, }
+        case "FETCH_REQUEST":
+            return { ...state, loading: true,  }
+        default:
+            return state
+    }
+}
 
 const PlaceOrderScreen = () => {
 
+    const reduxDispatch = useDispatch()
+    const navigate = useNavigate()
+    const user = useSelector((state) => state.handleCart)
+    const [{ loading, error, order }, dispatch] = useReducer(reducer, {
+        loading: false,
+    })
     const cart = useSelector((state) => state.handleCart)
     const itemPrice = cart.cart.cartItem.reduce((a, c) => a + c.price * c.quantity, 0)
     const totalTax = itemPrice * 10 / 100
     const totalPrice = itemPrice + totalTax
+
+    const submitNewOrder = async() => {
+
+
+        dispatch({ type: "FETCH_REQUEST" })
+        try {
+
+            const { data } = await axios.post("http://localhost:4000/api/order",
+                {
+                    foodItem: cart.cart.cartItem,
+                    shippingAddress: cart.cart.shippingAddress,
+                    paymentMethod: cart.cart.paymentMethod,
+                    itemPrice: itemPrice,
+                    totalPrice: totalPrice,
+                },
+                {
+                    headers: {
+                        authorization: `Bearer ${user.userInfo.token}`,
+                    }
+                }
+            )
+            reduxDispatch(clearCart())
+            dispatch({ type: "FETCH_SUCCESS" })
+            localStorage.removeItem("cartItem")
+            navigate(`/order/${data.order._id}`)
+            toast.success("Order submitted!")
+        } catch {
+            dispatch({ type: "FETCH_REQUEST" })
+            toast.error("Order not submitted!")
+        }
+    }
 
     return (
         <div>
@@ -77,7 +130,7 @@ const PlaceOrderScreen = () => {
                                 <ListGroup.Item>Shipping : $ {totalTax.toFixed(2)}</ListGroup.Item>
                                 <ListGroup.Item>Total Price : $ {totalPrice.toFixed(2)}</ListGroup.Item>
                             </ListGroup>
-                            <Button variant='warning' className='rounded-0 w-100 d-block'>Order Now</Button>
+                            <Button variant='warning' className='rounded-0 w-100 d-block' onClick={() => submitNewOrder()}>Order Now</Button>
                         </Card>
                     </Col>
                 </Row>

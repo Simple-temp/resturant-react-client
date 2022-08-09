@@ -82,6 +82,12 @@ query getAllorders {
     		review 
     		stock 
     }
+    shippingAddress {
+      country
+      address
+      postalCode
+      phone
+    }
     paymentMethod
     itemPrice
     totalPrice
