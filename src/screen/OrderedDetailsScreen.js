@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { GET_ORDER_BY_ID } from '../gqloperation/Queres';
-import { Container, Row, Col, ListGroup, Button, Card } from "react-bootstrap"
+import { Container, Row, Col, ListGroup, Button, Card, Alert } from "react-bootstrap"
 import { useParams } from 'react-router-dom';
 
 const OrderedDetailsScreen = () => {
@@ -28,6 +28,11 @@ const OrderedDetailsScreen = () => {
                                                 <Card variant='flush' className='py-3 ps-2'>
                                                     <span><b>PaymentMethod :</b> {data.order.paymentMethod}</span>
                                                 </Card>
+                                                {
+                                                    data.order.paidAt === true
+                                                    ? <Alert variant='success'> Paid At, {new Date(data.order.paidAt).toDateString()}</Alert>
+                                                    : <Alert variant='danger'> Not Paid </Alert>
+                                                }                                               
                                             </Col>
                                         </Row>
                                         <Row>
@@ -39,6 +44,11 @@ const OrderedDetailsScreen = () => {
                                                     <span><b>PostalCode :</b> {data.order.shippingAddress.postalCode}</span>
                                                     <span><b>Phone :</b> {data.order.shippingAddress.phone}</span>
                                                 </Card>
+                                                {
+                                                    data.order.isDelivered === true
+                                                    ? <Alert variant='success'> Delivered At, {new Date(data.order.devliveredAt).toDateString()}</Alert>
+                                                    : <Alert variant='danger'> Not Delivered </Alert>
+                                                } 
                                             </Col>
                                         </Row>
                                         <Row>

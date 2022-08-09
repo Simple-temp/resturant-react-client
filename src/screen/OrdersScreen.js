@@ -4,7 +4,7 @@ import { GET_ORDERS, GET_USERS } from '../gqloperation/Queres';
 import { Container } from "react-bootstrap"
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { DELETE_FOOD, DELETE_ORDER } from '../gqloperation/Mutations';
+import { DELETE_ORDER, IS_DELIVERED } from '../gqloperation/Mutations';
 
 
 
@@ -14,9 +14,15 @@ const OrdersScreen = () => {
     const { loading, error, data } = useQuery(GET_ORDERS)
     const { loading: userloading, error: usererror, data: user } = useQuery(GET_USERS)
     const [deleteorder, { loading: orderloading }] = useMutation(DELETE_ORDER)
+    const [deliveryorder] = useMutation(IS_DELIVERED)
 
     const handleDelivered = (id) => {
-        console.log((id))
+        deliveryorder({
+            variables : {
+                orderId : id
+            }
+        })
+        window.location.reload()
     }
 
     const handleRemove = (id) => {
