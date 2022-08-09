@@ -113,30 +113,11 @@ mutation delfood ( $foodId : ID! ){
 `
 export const DELETE_ORDER = gql`
 
-query getOrdersByI ( $orderid : ID! ) {
-    order(_id : $orderid){
-      _id
-      userid
-      foodItem {
-              _id
-              name 
-              img 
-              quantity
-              price 
-              des 
-              rating 
-              review 
-              stock 
-      }
-      paymentMethod
-      itemPrice
-      totalPrice
-      isPaid
-      paidAt
-      isDelivered
-      devliveredAt
-    }
+mutation deleteorder ( $orderId : ID! ){
+  delorder(_id : $orderId){
+    _id
   }
+}
 
 `
 

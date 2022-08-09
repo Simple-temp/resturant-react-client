@@ -1,46 +1,26 @@
-import { useQuery } from '@apollo/client';
-import React, { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import React from 'react';
 import { GET_USERS, MY_ORDER } from '../gqloperation/Queres';
 import { Container, Alert } from "react-bootstrap"
 import { Button } from 'react-bootstrap';
-import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import { DELETE_ORDER } from '../gqloperation/Mutations';
 
-const customStyles = {
-    content: {
-        height: "250px",
-        width: "340px",
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
 
 const OrderedScreen = () => {
 
     const navigate = useNavigate()
     const { loading, error, data } = useQuery(MY_ORDER)
     const { loading: userloading, error: usererror, data: user } = useQuery(GET_USERS)
-
-    const [modalIsOpen, setIsOpen] = useState(false);
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    const handleDelivered = (id) => {
-        console.log((id))
-    }
+    const [deleteorder, { loading: orderloading }] = useMutation(DELETE_ORDER)
 
     const handleRemove = (id) => {
-        console.log(id)
+        deleteorder({
+            variables : {
+                orderId : id
+            }
+        })
+        window.location.reload()
     }
 
     return (
@@ -87,10 +67,9 @@ const OrderedScreen = () => {
                                                 : <Button variant="warning">Not Paid</Button>}</td>
 
                                             <td data-label="DELIVERED">
-                                                <Button variant={order.isDelivered
-                                                    ? `outline-warning` : `warning`} onClick={() => handleDelivered(order._id)}>
+                                                <Button variant={order.isDelivered ? `outline-warning` : `warning`}>
                                                     {
-                                                        order.isDelivered ? `Delivered at,${new Date(order.devliveredAt).toDateString()}` : "Click to Delivered"
+                                                        order.isDelivered ? `Delivered at,${new Date(order.devliveredAt).toDateString()}` : "Not Delivered"
                                                     }
                                                 </Button>
                                             </td>
@@ -100,18 +79,7 @@ const OrderedScreen = () => {
                                                 </Button>
                                             </td>
                                             <td data-label="ACTION">
-                                                <Modal
-                                                    isOpen={modalIsOpen}
-                                                    onRequestClose={closeModal}
-                                                    style={customStyles}
-                                                >
-                                                    <h4 className='text-center mt-5'>Are you sure ?</h4>
-                                                    <div className='confirm-box__actions mt-3 d-flex'>
-                                                        <button onClick={() => handleRemove(order._id)} className="outline-success">Confirm</button>
-                                                        <button onClick={closeModal} className="outline-danger">Cancel</button>
-                                                    </div>
-                                                </Modal>
-                                                <Button variant="outline-warning" onClick={openModal}>
+                                                <Button variant="outline-warning" onClick={()=>handleRemove(order._id)}>
                                                     <i className="fa-solid fa-trash-can"></i>
                                                 </Button>
                                             </td>
