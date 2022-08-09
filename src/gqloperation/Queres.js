@@ -117,6 +117,12 @@ query getOrdersByI ( $orderid : ID! ) {
     		review 
     		stock 
     }
+    shippingAddress {
+      country
+      address
+      postalCode
+      phone
+    }
     paymentMethod
     itemPrice
     totalPrice
@@ -145,6 +151,12 @@ query myorder{
     		rating 
     		review 
     		stock 
+    }
+    shippingAddress {
+      country
+      address
+      postalCode
+      phone
     }
     paymentMethod
     itemPrice

@@ -14,10 +14,16 @@ import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Shared/Navbar";
 import CartScreen from "./screen/CartScreen";
 import FoodDetailsScreen from "./screen/FoodDetailsScreen";
+import FoodEditScreen from "./screen/FoodEditScreen";
+import FoodScreen from "./screen/FoodScreen";
+import OrderedDetailsScreen from "./screen/OrderedDetailsScreen";
+import OrderedScreen from "./screen/OrderedScreen";
+import OrdersScreen from "./screen/OrdersScreen";
 import PaymentMethodScreen from "./screen/PaymentMethodScreen";
 import PlaceOrderScreen from "./screen/PlaceOrderScreen";
 import ProfileScreen from "./screen/ProfileScreen";
 import ShippingAddressScreen from "./screen/ShippingAddressScreen";
+import UsersScreen from "./screen/UsersScreen";
 
 function App() {
   return (
@@ -47,6 +53,27 @@ function App() {
             </PrivateRoute>} />
             <Route path="/placeorder" element={<PrivateRoute>
               <PlaceOrderScreen />
+            </PrivateRoute>} />
+            <Route path="/order/:id" element={<PrivateRoute>
+              <OrderedDetailsScreen />
+            </PrivateRoute>} />
+            <Route path="/myorder" element={<PrivateRoute>
+              <OrderedScreen />
+            </PrivateRoute>} />
+
+            {/* ADMIN ROUTES */}
+
+            <Route path="/admin/allorder" element={<PrivateRoute>
+              <OrdersScreen />
+            </PrivateRoute>} />
+            <Route path="/admin/user" element={<PrivateRoute>
+              <UsersScreen />
+            </PrivateRoute>} />
+            <Route path="/admin/food" element={<PrivateRoute>
+              <FoodScreen />
+            </PrivateRoute>} />
+            <Route path="/foodedit/:id" element={<PrivateRoute>
+              <FoodEditScreen />
             </PrivateRoute>} />
           </Routes>
         </main>

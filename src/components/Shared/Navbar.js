@@ -29,7 +29,7 @@ const NavBar = ({ name, ...props }) => {
             <Navbar variant='dark' bg='dark'>
                 <LinkContainer to="/">
                     <Nav.Link>
-                        <img src="images/logo.png" alt="" className='logo-img' />
+                        <h1 className='text-white'>Resturant</h1>
                     </Nav.Link>
                 </LinkContainer>
                 <div className='mx-auto navitem'>
@@ -82,7 +82,7 @@ const NavBar = ({ name, ...props }) => {
                                     <LinkContainer to="/profile">
                                         <Nav.Link className='text-warning text-capitalize'>{user.userInfo.name}</Nav.Link>
                                     </LinkContainer>
-                                    <LinkContainer to="/admin/myorder">
+                                    <LinkContainer to="/myorder">
                                         <Nav.Link className='text-warning text-capitalize'>My Order</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/admin/user">
@@ -97,12 +97,15 @@ const NavBar = ({ name, ...props }) => {
                                     <LinkContainer to="/admin/adminlist">
                                         <Nav.Link className='text-warning text-capitalize'>Admin List</Nav.Link>
                                     </LinkContainer>
+                                    <LinkContainer to="/admin/addnew">
+                                        <Nav.Link className='text-warning text-capitalize'>Add New Food</Nav.Link>
+                                    </LinkContainer>
                                 </>
                                     : user.userInfo && <>
                                         <LinkContainer to="/profile">
                                             <Nav.Link className='text-warning text-capitalize'>{user.userInfo.name}</Nav.Link>
                                         </LinkContainer>
-                                        <LinkContainer to="/order">
+                                        <LinkContainer to="/myorder">
                                             <Nav.Link className='text-warning text-capitalize'>My Order</Nav.Link>
                                         </LinkContainer>
                                     </>
