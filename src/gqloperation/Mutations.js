@@ -58,6 +58,16 @@ mutation deluser ( $userid : ID! ){
 
 `
 
+export const MAKE_ADMIN = gql`
+
+mutation makeAadmin ( $userId : ID! ){
+  makeAdmin ( _id : $userId){
+    isAdmin
+  }
+}
+
+`
+
 export const CREATE_FOOD = gql`
 
 mutation createfood ( $createFood : createFood! ){
