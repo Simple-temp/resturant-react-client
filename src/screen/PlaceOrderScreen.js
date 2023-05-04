@@ -38,7 +38,7 @@ const PlaceOrderScreen = () => {
         dispatch({ type: "FETCH_REQUEST" })
         try {
 
-            const { data } = await axios.post("https://resturentbd.herokuapp.com/api/order",
+            const { data } = await axios.post("https://resturant-7fgl.onrender.com/api/order",
                 {
                     foodItem: cart.cart.cartItem,
                     shippingAddress: cart.cart.shippingAddress,
