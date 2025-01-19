@@ -161,6 +161,18 @@ mutation isdelivered ( $orderId : ID! ){
 
 `
 
+export const CREATE_REVIEW_MESSAGES = gql`
+
+mutation createreview ( $createReview : createReview! ){
+  createreview(createReview :$createReview){
+    _id
+    message
+  }
+}
+
+
+`
+
 export const CREATE_ORDER = gql`
 
 mutation createorder( $createOrder : createOrder!){

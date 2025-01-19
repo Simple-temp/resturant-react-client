@@ -1,14 +1,17 @@
-import { useQuery } from '@apollo/client';
-import React from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import React, { useState } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Rating from '../components/Rating';
 import { GET_FOOD_BY_ID } from '../gqloperation/Queres';
 import { AddToCart } from '../redux/Action';
+import { CREATE_REVIEW_MESSAGES } from '../gqloperation/Mutations';
+import { toast } from 'react-toastify';
 
 const FoodDetailsScreen = () => {
 
+    const [ messages, setmessages ] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const cart = useSelector((state) => state.handleCart)
@@ -20,12 +23,27 @@ const FoodDetailsScreen = () => {
         }
     })
 
+    const [ create, { loading : loadingReview, error: errorReview , data: dataReview} ] = useMutation(CREATE_REVIEW_MESSAGES)
+
     const updateAddTocart = () => {
 
         const exitsItem = cart.cart.cartItem.find((x) => x._id === data.food._id)
         const quantity = exitsItem ? exitsItem.quantity + 1 : 1
         dispatch(AddToCart(data.food, quantity))
         navigate("/cart")
+    }
+
+    const submitReview = () =>{
+        create({
+            variables : {
+                createReview :{
+                    message : messages
+                }
+            }
+        })
+        toast.success("Review Add Successfully",)
+        navigate("/")
+        window.location.reload()
     }
 
     return (
@@ -37,6 +55,10 @@ const FoodDetailsScreen = () => {
                             : <Row>
                                 <Col md={5}>
                                     <img src={data.food.img} alt="" className='mx-auto d-block' />
+                                    <div className='add-review'>
+                                        <textarea className='review-textarea' onChange={(e)=>setmessages(e.target.value)}/>
+                                        <button className='review-btn' onClick={submitReview}> Submit Review </button>
+                                    </div>
                                 </Col>
                                 <Col md={7} className="mt-2">
                                     <Card>

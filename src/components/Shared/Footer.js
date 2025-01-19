@@ -54,7 +54,7 @@ const Footer = () => {
                 </Col>
             </Container>
             <div className='copyright pb-2 pt-4'>
-                <p className='text-center'>© {new Date().getFullYear()} All Rights Reserved. Design by Aziz</p>
+                <p className='text-center'>© {new Date().getFullYear()} All Rights Reserved.</p>
             </div>
         </footer>
     );
