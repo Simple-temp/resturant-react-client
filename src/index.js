@@ -13,7 +13,7 @@ import store from './redux/Store';
 const info = JSON.parse(localStorage.getItem("userInfo"))
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://resturant-7fgl.onrender.com/graphql',
   cache: new InMemoryCache(),
   headers : {
     authorization : info ? `Bearer ${info.token}` : ""
