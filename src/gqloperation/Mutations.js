@@ -173,6 +173,33 @@ mutation createreview ( $createReview : createReview! ){
 
 `
 
+export const CREATE_MESSAGES_FOR_USER = gql`
+
+mutation createmessage ( $createMessage : createMessage! ){
+  	createmessage ( createMessage : $createMessage){
+    _id
+    name
+    phone
+    email
+    message
+  }
+}
+
+
+`
+
+export const CREATE_NEWSLETTER_FOR_USER = gql`
+
+mutation createnewsletter ( $createNewsletter : createNewsletter! ){
+  	createnewsletter ( createNewsletter : $createNewsletter){
+    _id
+    newletter
+  }
+}
+
+
+`
+
 export const CREATE_ORDER = gql`
 
 mutation createorder( $createOrder : createOrder!){

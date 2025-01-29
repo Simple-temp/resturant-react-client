@@ -18,10 +18,10 @@ const CLient = () => {
                         loading ? <h4>Loading..</h4>
                             : error ? console.log(error)
                                 : data.review.map((item) => (
-                                    <Col md={10} lg={5} className="mx-auto mt-5" key={item._id}>
-                                        <Card className='p-3 bg-dark'>
-                                            <img src="images/client.jpg" alt="" className='mx-auto mt-5' />
-                                            <h4 className='mb-3 mt-4 text-center text-white'>Roock Due</h4>
+                                    <Col md={4} lg={3} className="mt-5" key={item._id}>
+                                        <Card className='p-1 bg-dark'>
+                                            <img src="images/client.jpg" alt="" className='mx-auto mt-5' style={{width:"80px", height:"80px", borderRadius: "50%"}} />
+                                            <h4 className='mb-3 mt-4 text-center text-white'>Unknown</h4>
                                             <p className='mb-4 text-center px-5 text-white'>{item.message}</p>
                                             <img src="images/client_icon.png" alt="" className='mx-auto img-fluid mb-5 mt-4' />
                                         </Card>
